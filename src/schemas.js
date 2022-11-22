@@ -9,16 +9,16 @@ export const AddBookSchema = {
       isbn: { description: "ISBN-code of the book", type: "string" },
     },
   },
-  // response: {
-  //   201: {
-  //     description: "Success response",
-  //     type: "object",
-  //     properties: {
-  //       success: { type: "boolean" },
-  //       message: { type: "string" },
-  //     },
-  //   },
-  // },
+  response: {
+    201: {
+      description: "Success response",
+      type: "object",
+      properties: {
+        success: { type: "boolean" },
+        message: { type: "string" },
+      },
+    },
+  },
 };
 
 export const GetBooksSchema = {
