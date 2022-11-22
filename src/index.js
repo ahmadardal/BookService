@@ -4,8 +4,6 @@ import BookRoutes from "./routes.js";
 
 const server = fastify({logger: true});
 
-
-
 const start = async () => {
   try {
 
