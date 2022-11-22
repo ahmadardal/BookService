@@ -1,6 +1,5 @@
 import environment from "./environment.js";
 import fastify from "fastify";
-import { data } from "./data.js";
 
 const server = fastify();
 
