@@ -7,4 +7,6 @@ const BookSchema = new Schema({
   isbn: { type: String, required: true },
 });
 
-export const Book = model("Book", BookSchema);
+const Book = model("Book", BookSchema);
+
+export default Book;
