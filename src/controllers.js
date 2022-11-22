@@ -1,14 +1,30 @@
-export default async function AddBookController(request, response) {
+import fastify from "fastify";
+
+export async function AddBookController(request, response) {
   try {
+    request.log.info("Request received!!!");
 
-    // Applogik
-
+    return request.body;
   } catch (error) {
-    fastify.log.error(error);
+    request.log.error(error);
     await response.status(500).send("An error occurred!");
   }
 }
 
-export async function TestController(request, response) {
-    
+export async function GetBooksController(request, response) {
+  try {
+    // Applogik
+  } catch (error) {
+    request.log.error(error);
+    await response.status(500).send("An error occurred!");
+  }
+}
+
+export async function DeleteBookController(request, response) {
+  try {
+    // Applogik
+  } catch (error) {
+    request.log.error(error);
+    await response.status(500).send("An error occurred!");
+  }
 }
