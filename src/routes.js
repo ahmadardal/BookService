@@ -10,8 +10,16 @@ async function BookRoutes(server, options) {
   });
 
   server.route({
+    method: "POST",
+    url: "/login",
+    schema: schemas.LoginSchema,
+    handler: controllers.LoginController,
+  });
+
+  server.route({
     method: "GET",
     url: "/books",
+    preHandler: [server.authenticate],
     schema: schemas.GetBooksSchema,
     handler: controllers.GetBooksController,
   });
