@@ -1,5 +1,23 @@
 import fastify from "fastify";
 
+export async function LoginController(request, response) {
+  try {
+    const jwtToken = await response.jwtSign(
+      { name: "Ahmad", userId: "1234-abc" },
+      { expiresIn: "1m" }
+    );
+
+    const responseData = {
+      token: jwtToken,
+    };
+
+    response.status(200).send(responseData);
+  } catch (error) {
+    request.log.error(error);
+    await response.status(500).send("An error occurred!");
+  }
+}
+
 export async function AddBookController(request, response) {
   try {
     const { Book } = request.db.models;
@@ -32,7 +50,7 @@ export async function DeleteBookController(request, response) {
   try {
     // Applogik
 
-    const { Book } = request.db.models
+    const { Book } = request.db.models;
 
     const { deletedCount } = await Book.deleteOne({
       title: request.body.title,

@@ -1,3 +1,25 @@
+export const LoginSchema = {
+  body: {
+    type: "object",
+    required: ["email", "password",],
+    properties: {
+      email: { description: "Email of the user", type: "string" },
+      password: { description: "Password of the user", type: "string" },
+    },
+  },
+  response: {
+    200: {
+      description: "Success response",
+      type: "object",
+      properties: {
+        token: { type: "string" },
+      },
+    },
+  },
+};
+
+
+
 export const AddBookSchema = {
   body: {
     type: "object",
