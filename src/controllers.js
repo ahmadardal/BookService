@@ -48,7 +48,8 @@ export async function RegisterController(request, response) {
 
     const { User } = request.db.models;
 
-    const existsUser = User.find({ email: request.body.email });
+    const existsUser = await User.findOne({ email: request.body.email });
+
 
     // Returnera om det finns en användare
     if (existsUser) {
