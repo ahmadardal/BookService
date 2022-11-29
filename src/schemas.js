@@ -19,6 +19,29 @@ export const LoginSchema = {
 };
 
 
+export const RegisterSchema = {
+  body: {
+    type: "object",
+    required: ["name", "email", "password",],
+    properties: {
+      name: { description: "Full name of the user", type: "string" },
+      email: { description: "Email of the user", type: "string" },
+      password: { description: "Password of the user", type: "string" },
+    },
+  },
+  response: {
+    201: {
+      description: "Success response",
+      type: "object",
+      properties: {
+        success: { type: "boolean" },
+        message: { type: "string" },
+      },
+    },
+  },
+};
+
+
 
 export const AddBookSchema = {
   body: {

@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import fp from "fastify-plugin";
 import Book from "../model/Book.js";
+import User from "../model/User.js";
 
 async function database(server, options) {
   try {
@@ -16,7 +17,7 @@ async function database(server, options) {
       "mongodb+srv://ahmadardal:Ahmed123@cluster0.khlxn.mongodb.net/?retryWrites=true&w=majority"
     );
 
-    const models = { Book };
+    const models = { Book, User };
 
     server.addHook("onRequest", async (request, response) => {
       request.db = { models };

@@ -12,6 +12,13 @@ async function BookRoutes(server, options) {
 
   server.route({
     method: "POST",
+    url: "/register",
+    schema: schemas.RegisterSchema,
+    handler: controllers.RegisterController,
+  });
+
+  server.route({
+    method: "POST",
     url: "/books",
     schema: schemas.AddBookSchema,
     handler: controllers.AddBookController,
