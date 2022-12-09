@@ -50,7 +50,6 @@ export async function RegisterController(request, response) {
 
     const existsUser = await User.findOne({ email: request.body.email });
 
-
     // Returnera om det finns en användare
     if (existsUser) {
       response.status(409);
@@ -89,8 +88,7 @@ export async function AddBookController(request, response) {
 
 export async function GetBooksController(request, response) {
   try {
-
-    const {userId} = request.user;
+    const { userId } = request.user;
 
     console.log(userId);
 
@@ -125,4 +123,14 @@ export async function DeleteBookController(request, response) {
     request.log.error(error);
     await response.status(500).send("An error occurred!");
   }
+}
+
+export async function ChatSocketController(connection, request) {
+  connection.socket.on("message", (message) => {
+    console.log("Message from client!!!");
+  });
+
+  connection.socket.on("close", () => {
+    console.log("Client disconnected");
+  });
 }

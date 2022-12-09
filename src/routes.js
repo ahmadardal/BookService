@@ -2,7 +2,6 @@ import * as controllers from "./controllers.js";
 import * as schemas from "./schemas.js";
 
 async function BookRoutes(server, options) {
-
   server.route({
     method: "POST",
     url: "/login",
@@ -37,6 +36,14 @@ async function BookRoutes(server, options) {
     url: "/books",
     schema: schemas.DeleteBookSchema,
     handler: controllers.DeleteBookController,
+  });
+
+  server.route({
+    method: "GET",
+    url: "/chat",
+    handler: (req, res) =>
+      res.send("This endpoint is intended for websocket use only!"),
+    wsHandler: controllers.ChatSocketController,
   });
 }
 
