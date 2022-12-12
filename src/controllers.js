@@ -125,9 +125,22 @@ export async function DeleteBookController(request, response) {
   }
 }
 
-export async function ChatSocketController(connection, request) {
-  connection.socket.on("message", (message) => {
-    console.log("Message from client!!!");
+function broadcast(message, server) {
+  for (let client of server.websocketServer.clients) {
+    client.send(JSON.stringify(message));
+  }
+}
+
+export async function ChatSocketController(connection, request, server) {
+
+  connection.socket.on("connection", () => {
+    console.log("Client connected!");
+  });
+
+  connection.socket.on("message", (data) => {
+    const message = JSON.parse(data.toString());
+    broadcast(message, server);
+    console.log("Message from client!!!", message);
   });
 
   connection.socket.on("close", () => {

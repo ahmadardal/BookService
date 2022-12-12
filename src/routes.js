@@ -43,7 +43,7 @@ async function BookRoutes(server, options) {
     url: "/chat",
     handler: (req, res) =>
       res.send("This endpoint is intended for websocket use only!"),
-    wsHandler: controllers.ChatSocketController,
+    wsHandler: (connection, request) => controllers.ChatSocketController(connection, request, server),
   });
 }
 

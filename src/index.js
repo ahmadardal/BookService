@@ -1,14 +1,16 @@
 import environment from "./utils/environment.js";
 import fastify from "fastify";
-import fastifyWebsocket from '@fastify/websocket';
+import fastifyWebsocket from "@fastify/websocket";
 import BookRoutes from "./routes.js";
 import database from "./utils/db.js";
 import Auth from "./utils/auth.js";
+import fastifyCors from "@fastify/cors";
 
 const server = fastify({ logger: true });
 
 const start = async () => {
   try {
+    await server.register(fastifyCors, {});
 
     await server.register(fastifyWebsocket);
 
